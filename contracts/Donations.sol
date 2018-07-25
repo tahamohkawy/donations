@@ -7,12 +7,12 @@ pragma solidity ^0.4.11;
     uint totalDonations;
     mapping (address  => uint) donations;
     
-    function Donations() public{
+    function Constructor() public{
         beneficiary = msg.sender;
     }
 
     //Fallback function
-    function () payable public{
+    function () payable public {
         revert();
     }
 
