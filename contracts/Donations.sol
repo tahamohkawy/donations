@@ -7,7 +7,7 @@ pragma solidity ^0.4.11;
     uint totalDonations;
     mapping (address  => uint) donations;
     
-    function Constructor() public{
+    constructor() public{
         beneficiary = msg.sender;
     }
 
