@@ -20,21 +20,26 @@ pragma solidity ^0.4.11;
 
         require(msg.value > 0);
         
-        if(donations[msg.sender] > 0) {
-            donations[msg.sender]+=msg.value;
+        if (donations[msg.sender] > 0) {
+            donations[msg.sender] += msg.value;
         }else {
             donations[msg.sender] = msg.value;
         }
 
-        totalDonations+=msg.value;
+        totalDonations += msg.value;
     }
 
     function takeTheDonations() public {
-        if(msg.sender == beneficiary) {
+        if (msg.sender == beneficiary) {
             uint amount = totalDonations;
             totalDonations = 0;
             beneficiary.transfer(amount);
         }
+    }
+
+    function kill() public { 
+        if (msg.sender == beneficiary) 
+            selfdestruct(beneficiary); 
     }
     
 }
